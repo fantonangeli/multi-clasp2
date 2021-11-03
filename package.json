@@ -1,0 +1,40 @@
+{
+  "name": "multi-clasp2",
+  "version": "2.0.0",
+  "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
+  "main": "index.js",
+  "dependencies": {
+    "@google/clasp": "1.5.3",
+    "minimist": "^0.0.8"
+  },
+  "author": "Fabrizio Antonangeli",
+  "license": "GPL-3.0",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fantonangeli/multi-clasp2"
+  },
+  "keywords": [
+    "clasp",
+    "apps",
+    "script",
+    "multiple",
+    "projects"
+  ],
+  "bugs": {
+    "url": "https://github.com/fantonangeli/multi-clasp2/issues"
+  },
+  "homepage": "https://github.com/fantonangeli/multi-clasp2",
+  "bin": {
+    "multi-clasp": "index.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.1.0",
+    "jest": "^27.3.1",
+    "release-it": "^14.11.6"
+  },
+  "jest": {}
+}
