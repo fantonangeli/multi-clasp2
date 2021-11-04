@@ -11,7 +11,8 @@
   "license": "GPL-3.0",
   "scripts": {
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "multi-clasp": "index.js"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^3.3.0",
     "eslint": "^8.1.0",
     "jest": "^27.3.1",
     "release-it": "^14.11.6"
