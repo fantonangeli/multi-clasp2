@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fantonangeli/multi-clasp2"
+    "url": "https://github.com/fantonangeli/multi-clasp2.git"
   },
   "keywords": [
     "clasp",
