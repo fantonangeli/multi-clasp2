@@ -4,8 +4,8 @@
   "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
   "main": "index.js",
   "dependencies": {
-    "@google/clasp": "1.5.3",
-    "minimist": "^0.0.8"
+    "@google/clasp": "2.4.1",
+    "minimist": "^1.2.5"
   },
   "author": "Fabrizio Antonangeli",
   "license": "GPL-3.0",
