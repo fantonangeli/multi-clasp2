@@ -3,7 +3,8 @@
         "commonjs": true
     },
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "rules": {
         "no-undef": "off",
@@ -15,11 +16,12 @@
     },
     "globals": {},
     "plugins": [
+        "@typescript-eslint"
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "root": true
 }
-

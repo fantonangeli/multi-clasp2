@@ -1,42 +1,48 @@
 {
-  "name": "multi-clasp2",
-  "version": "2.0.1",
-  "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
-  "main": "index.js",
-  "dependencies": {
-    "@google/clasp": "2.4.1",
-    "minimist": "^1.2.5"
-  },
-  "author": "Fabrizio Antonangeli",
-  "license": "GPL-3.0",
-  "scripts": {
-    "test": "jest",
-    "lint": "eslint .",
-    "release": "release-it"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fantonangeli/multi-clasp2.git"
-  },
-  "keywords": [
-    "clasp",
-    "apps",
-    "script",
-    "multiple",
-    "projects"
-  ],
-  "bugs": {
-    "url": "https://github.com/fantonangeli/multi-clasp2/issues"
-  },
-  "homepage": "https://github.com/fantonangeli/multi-clasp2",
-  "bin": {
-    "multi-clasp": "index.js"
-  },
-  "devDependencies": {
-    "@release-it/conventional-changelog": "^3.3.0",
-    "eslint": "^8.1.0",
-    "jest": "^27.3.1",
-    "release-it": "^14.11.6"
-  },
-  "jest": {}
+    "name": "multi-clasp2",
+    "version": "2.0.1",
+    "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
+    "main": "build/src/index.ts",
+    "dependencies": {
+        "@google/clasp": "2.4.1",
+        "minimist": "^1.2.5",
+        "typescript": "^4.4.4"
+    },
+    "author": "Fabrizio Antonangeli",
+    "license": "GPL-3.0",
+    "scripts": {
+        "test": "jest",
+        "lint": "eslint .",
+        "release": "release-it",
+        "build": "tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fantonangeli/multi-clasp2.git"
+    },
+    "keywords": [
+        "clasp",
+        "apps",
+        "script",
+        "multiple",
+        "projects"
+    ],
+    "bugs": {
+        "url": "https://github.com/fantonangeli/multi-clasp2/issues"
+    },
+    "homepage": "https://github.com/fantonangeli/multi-clasp2",
+    "bin": {
+        "multi-clasp": "index.js"
+    },
+    "devDependencies": {
+        "@release-it/conventional-changelog": "^3.3.0",
+        "@types/jest": "^27.0.2",
+        "@types/node": "^16.11.6",
+        "@typescript-eslint/eslint-plugin": "^5.3.0",
+        "@typescript-eslint/parser": "^5.3.0",
+        "eslint": "^8.1.0",
+        "jest": "^27.3.1",
+        "release-it": "^14.11.6",
+        "ts-jest": "^27.0.7"
+    }
 }
