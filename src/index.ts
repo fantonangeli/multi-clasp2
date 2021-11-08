@@ -13,6 +13,8 @@ import { pushClasp } from './common';
 const clasps = JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
 ({
   async push() {
+    console.log("rootCommand ", rootCommand);
+    console.log("argv ", process.argv);
       for (let i = 0, len = clasps.length; i < len; i++) {
           let retVal=false;
           for (let r = 1; r <= (argv.retry || 1); r++) {

@@ -15,7 +15,8 @@
         "test": "jest",
         "lint": "eslint .",
         "release": "release-it",
-        "build": "tsc"
+        "build": "tsc",
+        "build-watch": "tsc --watch"
     },
     "repository": {
         "type": "git",
