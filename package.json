@@ -39,11 +39,11 @@
         "build/src"
     ],
     "devDependencies": {
-        "@release-it/conventional-changelog": "^3.3.0",
         "@types/jest": "^27.0.2",
         "@types/node": "^16.11.6",
         "@typescript-eslint/eslint-plugin": "^5.3.0",
         "@typescript-eslint/parser": "^5.3.0",
+        "auto-changelog": "^2.3.0",
         "eslint": "^8.1.0",
         "jest": "^27.3.1",
         "release-it": "^14.11.6",
