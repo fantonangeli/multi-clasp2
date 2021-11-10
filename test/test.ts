@@ -1,6 +1,5 @@
-const fs = require("fs");
-const util = require('util');
-const { pushClasp } = require('../src/common.js');
+import * as fs from "fs";
+import { pushClasp } from '../src/common';
 
 jest.mock('util', () => ({
     promisify: jest.fn(() => {
@@ -9,7 +8,7 @@ jest.mock('util', () => ({
 }));
 
 jest.mock("fs", () => ({
-    writeFile: jest.fn().mockResolvedValue(),
+    writeFile: jest.fn().mockResolvedValue(true),
 }));
 
 describe('common.js tests', () => {
@@ -17,7 +16,7 @@ describe('common.js tests', () => {
         test('with wrong inputs', async () => {
             expect(await pushClasp({scriptId:null, rootDir:null})).toBeFalsy();
             expect(await pushClasp({scriptId:"", rootDir:null})).toBeFalsy();
-            expect(await pushClasp()).toBeFalsy();
+            expect(await pushClasp(undefined)).toBeFalsy();
         });
 
         test('valid inputs', async () => {
