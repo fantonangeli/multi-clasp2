@@ -45,5 +45,15 @@ program
   .option('-a, --all', 'Undeploy all deployments')
   .action(genericAction);
 
+program
+  .command('version [description]')
+  .description('Creates an immutable version of the script')
+  .action(genericAction);
+
+program
+  .command('versions')
+  .description('List versions of a script')
+  .action(genericAction);
+
 program.version(version, '-v, --version', 'output the current version');
 program.parse();
