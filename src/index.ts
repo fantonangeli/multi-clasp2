@@ -1,31 +1,55 @@
 #! /usr/bin/env node
 
 import * as fs from 'fs';
-import * as minimist from 'minimist';
-
-const rootCommand = process.argv[2];
-
-const argv = minimist(process.argv.slice(2));
+import { Command } from 'commander';
 import { Config } from './config';
+import { runClasp } from './common';
+import {version} from '../package.json';
 
-import { pushClasp } from './common';
+const program = new Command();
+
+/**
+ * commander action to run clasp.
+ *
+ * @returns
+ */
+async function genericAction(): Promise<void> {
+  let retVal=true;
+
+  for (let i = 0, len = clasps.length; i < len; i++) {
+    retVal = await runClasp(clasps[i], process.argv[2], process.argv.slice(3).join(' '));
+    if (!retVal) {
+      return;
+    }
+  }
+
+  fs.unlink(Config.CLASP_FILENAME, (err) => {
+    if (err) throw err;
+  });
+}
 
 const clasps = JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
-({
-  async push() {
-    console.log("rootCommand ", rootCommand);
-    console.log("argv ", process.argv);
-      for (let i = 0, len = clasps.length; i < len; i++) {
-          let retVal=false;
-          for (let r = 1; r <= (argv.retry || 1); r++) {
-              retVal=await pushClasp(clasps[i]);
-              if (retVal) break;
-          }
-          if(!retVal) return false;
-      }
 
-      fs.unlink(Config.CLASP_FILENAME, (err) => {
-          if (err) throw err;
-      });
-  },
-})[rootCommand]();
+program
+  .command('status')
+  .description('Lists files that will be pushed by clasp')
+  .option('--json', 'Show status in JSON form')
+  .action(genericAction);
+
+program
+  .command('push')
+  .description('Update the remote project')
+  .option('-f, --force', 'Forcibly overwrites the remote manifest.')
+  .action(genericAction);
+
+program
+  .command('open [scriptId]')
+  .description('Open a script')
+  .option('--webapp', 'Open web application in the browser')
+  .option('--creds', 'Open the URL to create credentials')
+  .option('--addon', 'List parent IDs and open the URL of the first one')
+  .action(genericAction);
+
+program.version(version);
+
+program.parse();

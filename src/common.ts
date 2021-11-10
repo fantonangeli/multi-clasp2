@@ -8,24 +8,26 @@ import { Config } from './config';
 /**
  * Push a Clasp configuration
  *
- * @param {SingleClasp} clasp the single clasp config
+ * @param claspConfig the single clasp config
+ * @param command the clasp command to execute
+ * @param options the command options
  * @return true if ok, false otherwise
  */
-export async function pushClasp(clasp:SingleClasp) {
-    if(!clasp || !clasp.scriptId) {
+export async function runClasp(claspConfig:SingleClasp, command: string, options = "") {
+    if(!claspConfig || !claspConfig.scriptId || !command) {
         return false;
     }
 
-    await fs.writeFile(Config.CLASP_FILENAME, JSON.stringify(clasp, null, 2) , Config.UTF_8 as BufferEncoding, async (err) => {
+    await fs.writeFile(Config.CLASP_FILENAME, JSON.stringify(claspConfig, null, 2) , Config.UTF_8 as BufferEncoding, async (err) => {
         if (err) throw err;
     });
-    console.log('Pushing scriptId:', clasp.scriptId);
+    console.log('Elaborating scriptId:', claspConfig.scriptId);
 
     try {
-        const { stdout } = await exec('clasp push');
-        console.log('stdout:', stdout);
+        const { stdout } = await exec(`clasp ${command} ${options}`);
+        console.log(stdout);
     } catch (e) {
-        console.error(e); // should contain code (exit code) and signal (that caused the termination).
+        console.error(e.stderr); 
         return false;
     }
 

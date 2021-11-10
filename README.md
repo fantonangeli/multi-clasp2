@@ -37,6 +37,3 @@ You do not need a .clasp.json file anymore.
 
 `multi-clasp push`
 
-#### Options
-
-- `--retry <n>`: If the push of an App Script fail with it will retry <n> times. Default is 1.

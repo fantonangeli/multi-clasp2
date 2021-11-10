@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { pushClasp } from '../src/common';
+import { runClasp } from '../src/common';
 
 jest.mock('util', () => ({
     promisify: jest.fn(() => {
@@ -12,15 +12,15 @@ jest.mock("fs", () => ({
 }));
 
 describe('common.js tests', () => {
-    describe('pushClasp', () => {
+    describe('runClasp push', () => {
         test('with wrong inputs', async () => {
-            expect(await pushClasp({scriptId:null, rootDir:null})).toBeFalsy();
-            expect(await pushClasp({scriptId:"", rootDir:null})).toBeFalsy();
-            expect(await pushClasp(undefined)).toBeFalsy();
+            expect(await runClasp({scriptId:null, rootDir:null}, "push", "")).toBeFalsy();
+            expect(await runClasp({scriptId:"", rootDir:null}, "push", "")).toBeFalsy();
+            expect(await runClasp(undefined, undefined, undefined)).toBeFalsy();
         });
 
         test('valid inputs', async () => {
-            expect(await pushClasp({scriptId:"123", rootDir:"src"})).toBeTruthy();
+            expect(await runClasp({scriptId:"123", rootDir:"src"}, "push", "")).toBeTruthy();
             expect(fs.writeFile).toHaveBeenCalledTimes(1);
         });
     });
