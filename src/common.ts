@@ -33,3 +33,33 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
 
     return true;
 }
+
+/**
+ * Read a Multi Clasp Config.
+ *
+ * @returns {SingleClasp[]}
+ */
+export function readMultiClaspConfig(): SingleClasp[] {
+  return JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
+}
+
+/**
+ * commander action to run clasp.
+ *
+ * @returns
+ */
+export async function genericAction(): Promise<void> {
+  let retVal=true;
+  const clasps = readMultiClaspConfig();
+
+  for (let i = 0, len = clasps.length; i < len; i++) {
+    retVal = await runClasp(clasps[i], process.argv[2], process.argv.slice(3).join(' '));
+    if (!retVal) {
+      return;
+    }
+  }
+
+  fs.unlink(Config.CLASP_FILENAME, (err) => {
+    if (err) throw err;
+  });
+}

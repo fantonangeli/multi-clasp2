@@ -3,32 +3,10 @@
 import * as fs from 'fs';
 import { Command } from 'commander';
 import { Config } from './config';
-import { runClasp } from './common';
+import { genericAction, readMultiClaspConfig, runClasp } from './common';
 import {version} from '../package.json';
 
 const program = new Command();
-
-/**
- * commander action to run clasp.
- *
- * @returns
- */
-async function genericAction(): Promise<void> {
-  let retVal=true;
-
-  for (let i = 0, len = clasps.length; i < len; i++) {
-    retVal = await runClasp(clasps[i], process.argv[2], process.argv.slice(3).join(' '));
-    if (!retVal) {
-      return;
-    }
-  }
-
-  fs.unlink(Config.CLASP_FILENAME, (err) => {
-    if (err) throw err;
-  });
-}
-
-const clasps = JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
 
 program
   .command('status')
@@ -50,6 +28,22 @@ program
   .option('--addon', 'List parent IDs and open the URL of the first one')
   .action(genericAction);
 
-program.version(version);
+program.command('deployments')
+  .description('List deployment ids of a script')
+  .action(genericAction);
 
+program
+  .command('deploy')
+  .description('Deploy a project')
+  .option('-V, --versionNumber <version>', 'The project version') // We can't use `version` in subcommand
+  .option('-d, --description <description>', 'The deployment description')
+  .action(genericAction);
+
+program
+  .command('undeploy [deploymentId]')
+  .description('Undeploy a deployment of a project')
+  .option('-a, --all', 'Undeploy all deployments')
+  .action(genericAction);
+
+program.version(version, '-v, --version', 'output the current version');
 program.parse();
