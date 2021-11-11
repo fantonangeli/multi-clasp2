@@ -24,7 +24,7 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
     console.log('Elaborating scriptId:', claspConfig.scriptId);
 
     try {
-        const { stdout } = await exec(`clasp ${command} ${options}`);
+        const { stdout } = await exec(`npx clasp ${command} ${options}`);
         console.log(stdout);
     } catch (e) {
         console.error(e.stderr); 
