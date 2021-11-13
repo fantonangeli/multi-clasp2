@@ -9,3 +9,16 @@ export const parseJsonOrDie = <T>(value: string): T => {
     throw "Invalid json";
   }
 };
+
+/**
+ * Get the Options for the clasp command.
+ *
+ * @param args array of arguments
+ * @returns the string with the options, "" otherwise
+ */
+export function getOptions (args:string[]=process.argv):string {
+  if (!args) {
+    return "";
+  }
+  return args.slice(3).join(' ');
+}

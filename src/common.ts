@@ -4,6 +4,7 @@ import * as child_process from 'child_process';
 const exec = util.promisify(child_process.exec);
 import { Config } from './config';
 import {OptionValues} from 'commander';
+import {getOptions} from './utils';
 
 
 /**
@@ -42,19 +43,6 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
  */
 export function readMultiClaspConfig(): SingleClasp[] {
   return JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
-}
-
-/**
- * Get the Options for the clasp command.
- *
- * @param args array of arguments
- * @returns the string with the options, "" otherwise
- */
-export function getOptions (args:string[]=process.argv):string {
-  if (!args) {
-    return "";
-  }
-  return args.slice(3).join(' ');
 }
 
 /**
