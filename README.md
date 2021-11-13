@@ -33,7 +33,17 @@ You do not need a .clasp.json file anymore.
 ]
 ```
 
-### Usage
+## Commands
 
-`multi-clasp push`
+The following clasp commands are supported. For the documentation refer to the official [documentation](https://github.com/google/clasp)
+
+- [`mutli-clasp push [--force]`](https://github.com/google/clasp#push)
+- [`mutli-clasp status [--json]`](https://github.com/google/clasp#status)
+- [`mutli-clasp open [--webapp] [--creds] [--addon]`](https://github.com/google/clasp#open)
+- [`mutli-clasp deployments`](https://github.com/google/clasp#deployments)
+- [`mutli-clasp deploy [--versionNumber <version>] [--description <description>]`](https://github.com/google/clasp#deploy)
+- [`mutli-clasp undeploy [--all]`](https://github.com/google/clasp#undeploy)
+- [`mutli-clasp version [description]`](https://github.com/google/clasp#version)
+- [`mutli-clasp versions`](https://github.com/google/clasp#versions)
+- [`mutli-clasp run [functionName] [--nondev] [--params <StringArray>]`](https://github.com/google/clasp#run)
 
