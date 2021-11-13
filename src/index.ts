@@ -22,7 +22,7 @@ program
   .action(genericAction);
 
 program
-  .command('open [scriptId]')
+  .command('open')
   .description('Open a script')
   .option('--webapp', 'Open web application in the browser')
   .option('--creds', 'Open the URL to create credentials')
@@ -41,7 +41,7 @@ program
   .action(genericAction);
 
 program
-  .command('undeploy [deploymentId]')
+  .command('undeploy')
   .description('Undeploy a deployment of a project')
   .option('-a, --all', 'Undeploy all deployments')
   .action(genericAction);
