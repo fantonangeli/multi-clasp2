@@ -5,6 +5,7 @@ import { Command } from 'commander';
 import { Config } from './config';
 import { genericAction, readMultiClaspConfig, runClasp } from './common';
 import {version} from '../package.json';
+import run from './run';
 
 const program = new Command();
 
@@ -50,7 +51,7 @@ program
   .description('Run a function in your Apps Scripts project')
   .option('--nondev', 'Run script function in non-devMode')
   .option('-p, --params [StringArray]', 'Add parameters required for the function as a JSON String Array')
-  .action(genericAction);
+  .action(run);
 
 program
   .command('version [description]')

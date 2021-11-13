@@ -1,4 +1,5 @@
 .clasp.json
+.multi-clasp.json
 .tags
 .DS_Store
 node_modules

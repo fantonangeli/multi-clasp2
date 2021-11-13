@@ -3,6 +3,7 @@ import * as util from 'util';
 import * as child_process from 'child_process';
 const exec = util.promisify(child_process.exec);
 import { Config } from './config';
+import {OptionValues} from 'commander';
 
 
 /**
@@ -44,22 +45,42 @@ export function readMultiClaspConfig(): SingleClasp[] {
 }
 
 /**
+ * Get the Options for the clasp command.
+ *
+ * @param args array of arguments
+ * @returns the string with the options, "" otherwise
+ */
+export function getOptions (args:string[]=process.argv):string {
+  if (!args) {
+    return "";
+  }
+  return args.slice(3).join(' ');
+}
+
+/**
+ * commander action to run clasp.
+ *
+ * @returns
+ */
+export async function foreachClasp(fn:(claspConfig:SingleClasp)=>Promise<void>):Promise<void> {
+  const clasps = readMultiClaspConfig();
+
+  for (let i = 0, len = clasps.length; i < len; i++) {
+    await fn(clasps[i]);
+  }
+
+  fs.unlink(Config.CLASP_FILENAME, (err) => {
+    if (err) throw err;
+  });
+}
+
+/**
  * commander action to run clasp.
  *
  * @returns
  */
 export async function genericAction(): Promise<void> {
-  let retVal=true;
-  const clasps = readMultiClaspConfig();
-
-  for (let i = 0, len = clasps.length; i < len; i++) {
-    retVal = await runClasp(clasps[i], process.argv[2], process.argv.slice(3).join(' '));
-    if (!retVal) {
-      return;
-    }
-  }
-
-  fs.unlink(Config.CLASP_FILENAME, (err) => {
-    if (err) throw err;
+  foreachClasp(async (claspConfig)=>{
+    await runClasp(claspConfig, process.argv[2], getOptions());
   });
 }
