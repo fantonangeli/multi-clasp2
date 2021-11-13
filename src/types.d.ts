@@ -1,4 +1,3 @@
-
 /**
  * SingleClasp configuration type
  */

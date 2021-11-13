@@ -5,6 +5,7 @@ const exec = util.promisify(child_process.exec);
 import { Config } from './config';
 import {OptionValues} from 'commander';
 import {getOptions} from './utils';
+import {MultiClaspErrors} from './mutli-clasp-errors';
 
 
 /**
@@ -69,6 +70,8 @@ export async function foreachClasp(fn:(claspConfig:SingleClasp)=>Promise<void>):
  */
 export async function genericAction(): Promise<void> {
   foreachClasp(async (claspConfig)=>{
-    await runClasp(claspConfig, process.argv[2], getOptions());
+    if(!(await runClasp(claspConfig, process.argv[2], getOptions()))){
+      throw MultiClaspErrors.ClaspError;
+    }
   });
 }
