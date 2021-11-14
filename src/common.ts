@@ -1,11 +1,6 @@
 import * as fs from 'fs';
-import * as util from 'util';
-import * as child_process from 'child_process';
-const exec = util.promisify(child_process.exec);
 import { Config } from './config';
-import {OptionValues} from 'commander';
-import {getOptions} from './utils';
-import {MultiClaspErrors} from './mutli-clasp-errors';
+import {execShellCommand, getOptions} from './utils';
 
 
 /**
@@ -27,8 +22,13 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
     console.log('Elaborating scriptId:', claspConfig.scriptId);
 
     try {
-        const { stdout } = await exec(`npx clasp ${command} ${options}`);
+        // const { stdout } = await exec(`npx clasp ${command} ${options}`);
+        const { error, stdout, stderr } = await execShellCommand(`npx clasp ${command} ${options}`);
         console.log(stdout);
+        if (error) {
+          console.log(stderr);
+          return false;
+        }
     } catch (e) {
         console.error(e.stderr); 
         return false;
@@ -40,7 +40,7 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
 /**
  * Read a Multi Clasp Config.
  *
- * @returns {SingleClasp[]}
+ * @returns array of SingleClasp 
  */
 export function readMultiClaspConfig(): SingleClasp[] {
   return JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
@@ -70,8 +70,9 @@ export async function foreachClasp(fn:(claspConfig:SingleClasp)=>Promise<void>):
  */
 export async function genericAction(): Promise<void> {
   foreachClasp(async (claspConfig)=>{
-    if(!(await runClasp(claspConfig, process.argv[2], getOptions()))){
-      throw MultiClaspErrors.ClaspError;
+    const retVal = await runClasp(claspConfig, process.argv[2], getOptions());
+    if(!retVal){
+      process.exit(1);
     }
   });
 }

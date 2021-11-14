@@ -1,4 +1,5 @@
 import {MultiClaspErrors} from "./mutli-clasp-errors";
+import * as child_process from 'child_process';
 
 /**
  * Parses input string into a valid JSON object or throws a `ClaspError` error.
@@ -23,4 +24,17 @@ export function getOptions (args:string[]=process.argv):string {
     return "";
   }
   return args.slice(3).join(' ');
+}
+
+/**
+ * Executes a shell command and return it as a Promise.
+ * @param cmd the shell command to execute.
+ * @return the promise
+ */
+export function execShellCommand(cmd: string):Promise<{error: child_process.ExecException | null, stdout: string, stderr: string}> {
+  return new Promise((resolve) => {
+    child_process.exec(cmd, (error, stdout, stderr) => {
+      resolve({ error, stdout, stderr });
+    });
+  });
 }
