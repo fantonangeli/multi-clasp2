@@ -37,7 +37,9 @@ You do not need a .clasp.json file anymore.
 
 The following clasp commands are supported. For the documentation refer to the official [documentation](https://github.com/google/clasp)
 
-- [`mutli-clasp push [--force]`](https://github.com/google/clasp#push)
+- [`mutli-clasp push [--force --retry <n>]`](https://github.com/google/clasp#push) <br>
+    in addition to the clasp arguments there is the --retry option: If the push of an App Script fail with it will retry times. Default is 1.
+
 - [`mutli-clasp status [--json]`](https://github.com/google/clasp#status)
 - [`mutli-clasp open [--webapp] [--creds] [--addon]`](https://github.com/google/clasp#open)
 - [`mutli-clasp deployments`](https://github.com/google/clasp#deployments)

@@ -6,6 +6,7 @@ import { Config } from './config';
 import { genericAction, readMultiClaspConfig, runClasp } from './common';
 import {version} from '../package.json';
 import run from './run';
+import push from './push';
 
 const program = new Command();
 
@@ -19,7 +20,8 @@ program
   .command('push')
   .description('Update the remote project')
   .option('-f, --force', 'Forcibly overwrites the remote manifest.')
-  .action(genericAction);
+  .option('--retry <n>', 'If the push of an App Script fail with it will retry n times. Default is 1.', '1')
+  .action(push);
 
 program
   .command('open')
