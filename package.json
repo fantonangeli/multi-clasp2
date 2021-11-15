@@ -16,7 +16,8 @@
         "lint": "eslint .",
         "release": "release-it",
         "build": "tsc",
-        "build-watch": "tsc --watch"
+        "build-watch": "tsc --watch",
+        "start": "node build/src/index.js"
     },
     "repository": {
         "type": "git",
