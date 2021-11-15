@@ -1,10 +1,9 @@
 import * as fs from "fs";
 import { runClasp } from '../src/common';
 
-jest.mock('util', () => ({
-    promisify: jest.fn(() => {
-        return jest.fn().mockResolvedValue({ stdout: true});
-    })
+jest.mock('../src/utils', () => ({
+  __esModule: true, // this property makes it work
+  execShellCommand: jest.fn().mockResolvedValue({error: null, stdout: "", stderr: ""}),
 }));
 
 jest.mock("fs", () => ({
