@@ -1,10 +1,7 @@
 #! /usr/bin/env node
 
-import * as fs from 'fs';
 import { Command } from 'commander';
-import { Config } from './config';
-import { genericAction, readMultiClaspConfig, runClasp } from './common';
-import {version} from '../package.json';
+import { genericAction } from './common';
 import run from './run';
 import push from './push';
 
@@ -65,5 +62,5 @@ program
   .description('List versions of a script')
   .action(genericAction);
 
-program.version(version, '-v, --version', 'output the current version');
+program.version(process.env.npm_package_version || 'unknown', '-v, --version', 'output the current version');
 program.parse();
