@@ -12,7 +12,7 @@
     "author": "Fabrizio Antonangeli",
     "license": "GPL-3.0",
     "scripts": {
-        "test": "jest",
+        "test": "jest --silent",
         "lint": "eslint .",
         "release": "release-it",
         "build": "tsc",
