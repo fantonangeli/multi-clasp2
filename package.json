@@ -2,8 +2,8 @@
     "name": "multi-clasp2",
     "version": "3.0.1",
     "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
-    "exports": "./build/src/index.js",
-    "main": "build/src/index.js",
+    "exports": "./build/index.js",
+    "main": "build/index.js",
     "dependencies": {
         "@google/clasp": "2.4.1",
         "commander": "^8.3.0",
@@ -17,7 +17,7 @@
         "release": "release-it",
         "build": "tsc",
         "build-watch": "tsc --watch",
-        "start": "node build/src/index.js"
+        "start": "node build/index.js"
     },
     "repository": {
         "type": "git",
@@ -35,10 +35,10 @@
     },
     "homepage": "https://github.com/fantonangeli/multi-clasp2",
     "bin": {
-        "multi-clasp": "build/src/index.js"
+        "multi-clasp": "build/index.js"
     },
     "files": [
-        "build/src"
+        "build"
     ],
     "devDependencies": {
         "@types/jest": "^27.0.2",
