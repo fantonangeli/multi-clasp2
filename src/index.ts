@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import { genericAction } from './common';
 import run from './run';
 import push from './push';
+import {version} from '../package.json';
 
 const program = new Command();
 
@@ -62,5 +63,5 @@ program
   .description('List versions of a script')
   .action(genericAction);
 
-program.version(process.env.npm_package_version || 'unknown', '-v, --version', 'output the current version');
+program.version(version || 'unknown', '-v, --version', 'output the current version');
 program.parse();
