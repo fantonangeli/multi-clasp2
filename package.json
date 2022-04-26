@@ -17,7 +17,7 @@
         "release": "release-it",
         "build": "tsc",
         "build-watch": "tsc --watch",
-        "start": "node build/index.js"
+        "start": "node build/src/index.js"
     },
     "repository": {
         "type": "git",
@@ -35,7 +35,7 @@
     },
     "homepage": "https://github.com/fantonangeli/multi-clasp2",
     "bin": {
-        "multi-clasp": "build/index.js"
+        "multi-clasp": "build/src/index.js"
     },
     "files": [
         "build"
