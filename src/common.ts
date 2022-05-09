@@ -16,9 +16,8 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
         return false;
     }
 
-    await fs.writeFile(Config.CLASP_FILENAME, JSON.stringify(claspConfig, null, 2) , Config.UTF_8 as BufferEncoding, async (err) => {
-        if (err) throw err;
-    });
+    await writeClaspConfig(claspConfig);
+
     console.log('Elaborating scriptId:', claspConfig.scriptId);
 
     try {
@@ -44,6 +43,39 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
  */
 export function readMultiClaspConfig(): SingleClasp[] {
   return JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
+}
+
+/**
+ * Read a Clasp Config.
+ * @param basePath the base path to read
+ * @returns the object with the configuration
+ */
+export function readClaspConfig(basePath = ''): SingleClasp {
+  return JSON.parse(fs.readFileSync(basePath + Config.CLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
+}
+
+/**
+ * Write a Clasp Config.
+ * @param config the clasp configuration
+ * @param basePath the base path to write
+ * @returns the object with the configuration
+ */
+export async function writeClaspConfig(config:SingleClasp, basePath = ''): Promise<void> {
+    return fs.writeFile(basePath + Config.CLASP_FILENAME, JSON.stringify(config, null, 2) , Config.UTF_8 as BufferEncoding, async (err) => {
+        if (err) throw err;
+    });
+}
+
+/**
+ * Write a Multi clasp Config.
+ * @param config the multi-clasp configuration
+ * @param basePath the base path to write
+ * @returns the object with the configuration
+ */
+export async function writeMultiClaspConfig(config:SingleClasp[], basePath = ''): Promise<void> {
+    return fs.writeFile(basePath + Config.MULTICLASP_FILENAME, JSON.stringify(config, null, 2) , Config.UTF_8 as BufferEncoding, async (err) => {
+        if (err) throw err;
+    });
 }
 
 /**

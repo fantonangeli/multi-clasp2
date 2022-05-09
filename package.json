@@ -12,7 +12,8 @@
     "author": "Fabrizio Antonangeli",
     "license": "GPL-3.0",
     "scripts": {
-        "test": "jest --silent",
+        "test": "jest --silent --config=jest.config.js",
+        "e2e": "jest --silent --config=jest.e2e.config.js",
         "lint": "eslint .",
         "release": "release-it",
         "build": "tsc",
@@ -47,6 +48,7 @@
         "@typescript-eslint/parser": "^5.22.0",
         "auto-changelog": "^2.4.0",
         "eslint": "^8.15.0",
+        "fs-extra": "^10.1.0",
         "jest": "^28.1.0",
         "release-it": "^15.0.0",
         "ts-jest": "^28.0.1"
