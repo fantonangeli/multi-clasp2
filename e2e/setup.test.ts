@@ -6,6 +6,8 @@ import {readClaspConfig, writeMultiClaspConfig} from '../src/common';
 const CLASP_JSON_BASE_PATH = SCRIPT_SRC_PATH + "/";
 
 describe('Generate the empty projects', () => {
+  const multiClaspConfig: MultiClasp = [];
+
   beforeAll(() => {
     spawnSync('rm', [Config.MULTICLASP_FILENAME]);
   });
@@ -26,9 +28,12 @@ describe('Generate the empty projects', () => {
       const claspJson = readClaspConfig(CLASP_JSON_BASE_PATH);
       expect(claspJson).toHaveProperty("scriptId");
       expect(claspJson.scriptId).not.toBe("");
-      expect(()=>writeMultiClaspConfig([claspJson])).not.toThrowError();
-      // TODO: append the configuration //
+      multiClaspConfig.push(claspJson);
     });
   });
+
+  it("create a multi-clasp config file", () => {
+      expect(()=>writeMultiClaspConfig(multiClaspConfig)).not.toThrowError();
+  })
 
 });
