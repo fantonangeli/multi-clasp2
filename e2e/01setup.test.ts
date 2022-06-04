@@ -13,7 +13,7 @@ describe('Generate the empty projects', () => {
   });
 
   afterAll(() => {
-      spawnSync('rm', [CLASP_JSON_BASE_PATH + Config.CLASP_FILENAME]);
+      spawnSync('rm', [CLASP_JSON_BASE_PATH + Config.CLASP_FILENAME, MULTI_CLASP_PATHS.TEST_CODE_JS]);
   });
 
   describe.each(["multi-clasp2-e2e-1" , "multi-clasp2-e2e-2" ])('Creating project %s', (projectName)=>{
