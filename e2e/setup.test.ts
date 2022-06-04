@@ -1,15 +1,15 @@
 import {spawnSync} from 'child_process';
-import {CLASP, SCRIPT_SRC_PATH} from './constants';
+import {CLASP, MULTI_CLASP_PATHS} from './constants';
 import {Config} from '../src/config';
 import {readClaspConfig, writeMultiClaspConfig} from '../src/common';
 
-const CLASP_JSON_BASE_PATH = SCRIPT_SRC_PATH + "/";
+const CLASP_JSON_BASE_PATH = MULTI_CLASP_PATHS.SCRIPT_SRC + "/";
 
 describe('Generate the empty projects', () => {
   const multiClaspConfig: MultiClasp = [];
 
   beforeAll(() => {
-    spawnSync('rm', [Config.MULTICLASP_FILENAME]);
+    spawnSync('rm', [Config.MULTICLASP_FILENAME, MULTI_CLASP_PATHS.TEST_CODE_JS]);
   });
 
   afterAll(() => {
@@ -19,7 +19,7 @@ describe('Generate the empty projects', () => {
   describe.each(["multi-clasp2-e2e-1" , "multi-clasp2-e2e-2" ])('Creating project %s', (projectName)=>{
     it(`create the standalone empty project "${projectName}" to Google Drive`, () => {
       spawnSync('rm', [CLASP_JSON_BASE_PATH + Config.CLASP_FILENAME]);
-      const result = spawnSync(CLASP, ['create', '--type', 'Standalone', '--title', projectName, '--rootDir', SCRIPT_SRC_PATH], {
+      const result = spawnSync(CLASP, ['create', '--type', 'Standalone', '--title', projectName, '--rootDir', MULTI_CLASP_PATHS.SCRIPT_SRC], {
         encoding: 'utf8',
       });
       expect(result.stdout).toContain('Created new Standalone script: https://script.google.com/d/');
