@@ -42,7 +42,7 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
  * @returns array of SingleClasp 
  */
 export function readMultiClaspConfig(): SingleClasp[] {
-  return JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString());
+  return JSON.parse(fs.readFileSync(Config.MULTICLASP_FILENAME, Config.UTF_8 as BufferEncoding).toString() || "[]");
 }
 
 /**
@@ -72,10 +72,8 @@ export async function writeClaspConfig(config:SingleClasp, basePath = ''): Promi
  * @param basePath the base path to write
  * @returns the object with the configuration
  */
-export async function writeMultiClaspConfig(config:SingleClasp[], basePath = ''): Promise<void> {
-    return fs.writeFile(basePath + Config.MULTICLASP_FILENAME, JSON.stringify(config, null, 2) , Config.UTF_8 as BufferEncoding, async (err) => {
-        if (err) throw err;
-    });
+export function writeMultiClaspConfig(config:SingleClasp[], basePath = ''): void {
+    return fs.writeFileSync(basePath + Config.MULTICLASP_FILENAME, JSON.stringify(config, null, 2), Config.UTF_8 as BufferEncoding);
 }
 
 /**

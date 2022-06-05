@@ -1,5 +1,5 @@
 import {spawnSync} from 'child_process';
-import {CLASP, MULTI_CLASP_PATHS} from './constants';
+import {CLASP, E2E_PROJECTS_NAMES, MULTI_CLASP_PATHS} from './constants';
 import {Config} from '../src/config';
 import {readClaspConfig, writeMultiClaspConfig} from '../src/common';
 
@@ -9,14 +9,14 @@ describe('Generate the empty projects', () => {
   const multiClaspConfig: MultiClasp = [];
 
   beforeAll(() => {
-    spawnSync('rm', [Config.MULTICLASP_FILENAME, MULTI_CLASP_PATHS.TEST_CODE_JS]);
+    spawnSync('rm', [Config.MULTICLASP_FILENAME]);
   });
 
   afterAll(() => {
-      spawnSync('rm', [CLASP_JSON_BASE_PATH + Config.CLASP_FILENAME, MULTI_CLASP_PATHS.TEST_CODE_JS]);
+      spawnSync('rm', [CLASP_JSON_BASE_PATH + Config.CLASP_FILENAME]);
   });
 
-  describe.each(["multi-clasp2-e2e-1" , "multi-clasp2-e2e-2" ])('Creating project %s', (projectName)=>{
+  describe.each(E2E_PROJECTS_NAMES)('Creating project %s', (projectName)=>{
     it(`create the standalone empty project "${projectName}" to Google Drive`, () => {
       spawnSync('rm', [CLASP_JSON_BASE_PATH + Config.CLASP_FILENAME]);
       const result = spawnSync(CLASP, ['create', '--type', 'Standalone', '--title', projectName, '--rootDir', MULTI_CLASP_PATHS.SCRIPT_SRC], {
@@ -32,8 +32,10 @@ describe('Generate the empty projects', () => {
     });
   });
 
-  it("create a multi-clasp config file", () => {
-      expect(()=>writeMultiClaspConfig(multiClaspConfig)).not.toThrowError();
+  it("create a multi-clasp config file", async () => {
+      expect(async ()=>{
+        await writeMultiClaspConfig(multiClaspConfig);
+      }).not.toThrowError();
   })
 
 });
