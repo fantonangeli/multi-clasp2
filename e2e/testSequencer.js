@@ -1,4 +1,3 @@
-// import * as Sequencer from '@jest/test-sequencer';
 const Sequencer = require('@jest/test-sequencer').default;
 
 class CustomSequencer extends Sequencer {

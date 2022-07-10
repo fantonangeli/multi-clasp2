@@ -24,7 +24,7 @@ describe('Test STATUS command', () => {
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "status", "--json"], {
       encoding: 'utf8',
     });
-    expect(result.stdout).toContain(`{\"filesToPush\":[\"scripts_src/appsscript.json\",\"scripts_src/code.js\",\"scripts_src/page.html\"],\"untrackedFiles\":[]}`);
+    expect(result.stdout).toContain(`{"filesToPush":["scripts_src/appsscript.json","scripts_src/code.js","scripts_src/page.html"],"untrackedFiles":[]}`);
     expect(result.status).toBe(0);
   });
 
