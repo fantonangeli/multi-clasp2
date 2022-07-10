@@ -10,6 +10,14 @@ You want them to share the same code, but making this Apps Script project into a
 
 The solution is to maintain a reference to each artifact's Apps Script project, and simultaneously push changes to these projects so they can receive updates while maintaining their non-library performance.
 
+## Install
+
+Install `multi-clasp2`:
+
+```sh
+npm install -g multi-clasp2
+```
+
 ### Example File
 
 Create a .multi-clasp.json file, which is just an array of JSON objects identical to the standard .clasp.json format.
@@ -37,15 +45,15 @@ You do not need a .clasp.json file anymore.
 
 The following clasp commands are supported. For the documentation refer to the official [documentation](https://github.com/google/clasp)
 
-- [`mutli-clasp push [--force --retry <n>]`](https://github.com/google/clasp#push) <br>
+- [`multi-clasp push [--force --retry <n>]`](https://github.com/google/clasp#push) <br>
     in addition to the clasp arguments there is the --retry option: If the push of an App Script fail with it will retry times. Default is 1.
 
-- [`mutli-clasp status [--json]`](https://github.com/google/clasp#status)
-- [`mutli-clasp open [--webapp] [--creds] [--addon]`](https://github.com/google/clasp#open)
-- [`mutli-clasp deployments`](https://github.com/google/clasp#deployments)
-- [`mutli-clasp deploy [--versionNumber <version>] [--description <description>]`](https://github.com/google/clasp#deploy)
-- [`mutli-clasp undeploy [--all]`](https://github.com/google/clasp#undeploy)
-- [`mutli-clasp version [description]`](https://github.com/google/clasp#version)
-- [`mutli-clasp versions`](https://github.com/google/clasp#versions)
-- [`mutli-clasp run [functionName] [--nondev] [--params <StringArray>]`](https://github.com/google/clasp#run)
+- [`multi-clasp status [--json]`](https://github.com/google/clasp#status)
+- [`multi-clasp open [--webapp] [--creds] [--addon]`](https://github.com/google/clasp#open)
+- [`multi-clasp deployments`](https://github.com/google/clasp#deployments)
+- [`multi-clasp deploy [--versionNumber <version>] [--description <description>]`](https://github.com/google/clasp#deploy)
+- [`multi-clasp undeploy [--all]`](https://github.com/google/clasp#undeploy)
+- [`multi-clasp version [description]`](https://github.com/google/clasp#version)
+- [`multi-clasp versions`](https://github.com/google/clasp#versions)
+- [`multi-clasp run [functionName] [--nondev] [--params <StringArray>]`](https://github.com/google/clasp#run)
 
