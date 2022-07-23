@@ -8,7 +8,7 @@ describe('Test DEPLOYMENTS command', () => {
     expect(readMultiClaspConfig()).not.toEqual([]);
   });
 
-  it.each(E2E_PROJECTS_NAMES)('Running DEPLOYMENTS', ()=>{
+  it.each(E2E_PROJECTS_NAMES)('Running DEPLOYMENTS for project %s', ()=>{
     expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "deployments"], {
       encoding: 'utf8',
@@ -25,7 +25,7 @@ describe('Test DEPLOY command', () => {
     expect(readMultiClaspConfig()).not.toEqual([]);
   });
 
-  it.each(E2E_PROJECTS_NAMES)('Running DEPLOY', ()=>{
+  it.each(E2E_PROJECTS_NAMES)('Running DEPLOY for project %s', ()=>{
     expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "deploy"], {
       encoding: 'utf8',
@@ -42,7 +42,7 @@ describe('Test UNDEPLOY command', () => {
     expect(readMultiClaspConfig()).not.toEqual([]);
   });
 
-  it.each(E2E_PROJECTS_NAMES)('Running UNDEPLOY', ()=>{
+  it.each(E2E_PROJECTS_NAMES)('Running UNDEPLOY for project %s', ()=>{
     expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "undeploy"], {
       encoding: 'utf8',
