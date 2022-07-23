@@ -13,7 +13,7 @@
     "license": "GPL-3.0",
     "scripts": {
         "test": "jest",
-        "e2e": "npm run build; jest --silent --runInBand --config=jest.e2e.config.js",
+        "e2e": "npm run build; jest --runInBand --config=jest.e2e.config.js",
         "lint": "eslint .",
         "release": "release-it",
         "build": "tsc",
