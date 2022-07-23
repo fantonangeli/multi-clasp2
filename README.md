@@ -12,6 +12,12 @@ The solution is to maintain a reference to each artifact's Apps Script project, 
 
 ## Install
 
+Install `clasp`:
+
+```sh
+npm install -g @google/clasp
+```
+
 Install `multi-clasp2`:
 
 ```sh
