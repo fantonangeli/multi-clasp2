@@ -9,7 +9,6 @@ describe('Test VERSION command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running VERSION for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "version", "'Test version'"], {
       encoding: 'utf8',
     });
@@ -27,7 +26,6 @@ describe('Test VERSIONS command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running VERSIONS for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "versions"], {
       encoding: 'utf8',
     });

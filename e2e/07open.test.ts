@@ -9,7 +9,6 @@ describe('Test OPEN command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running OPEN with for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "open"], {
       encoding: 'utf8',
     });

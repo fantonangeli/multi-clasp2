@@ -9,7 +9,6 @@ describe('Test RUN command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running RUN for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "run", "testSum", "-p", "[5, 4]"], {
       encoding: 'utf8',
     });

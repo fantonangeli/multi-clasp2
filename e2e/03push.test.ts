@@ -9,7 +9,6 @@ describe('Test PUSH command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running PUSH with "--force" for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "push", "--force"], {
       encoding: 'utf8',
     });

@@ -9,7 +9,6 @@ describe('Test STATUS command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running STATUS for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "status"], {
       encoding: 'utf8',
     });
@@ -20,7 +19,6 @@ describe('Test STATUS command', () => {
   });
 
   it.each(E2E_PROJECTS_NAMES)('Running STATUS with "--json" for project %s', ()=>{
-    expect(true).toBe(true);
     const result = spawnSync(NODE, [MULTI_CLASP_PATHS.MULTI_CLASP, "status", "--json"], {
       encoding: 'utf8',
     });
