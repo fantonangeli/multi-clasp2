@@ -6,8 +6,8 @@
     "main": "build/index.js",
     "dependencies": {
         "@google/clasp": "2.4.2",
-        "commander": "^9.4.1",
-        "typescript": "^4.8.4"
+        "commander": "^9.5.0",
+        "typescript": "^4.9.4"
     },
     "author": "Fabrizio Antonangeli",
     "license": "GPL-3.0",
@@ -42,16 +42,16 @@
         "build"
     ],
     "devDependencies": {
-        "@jest/test-sequencer": "^29.2.2",
-        "@types/jest": "^29.2.0",
-        "@types/node": "^18.11.7",
-        "@typescript-eslint/eslint-plugin": "^5.41.0",
-        "@typescript-eslint/parser": "^5.41.0",
+        "@jest/test-sequencer": "^29.3.1",
+        "@types/jest": "^29.2.5",
+        "@types/node": "^18.11.18",
+        "@typescript-eslint/eslint-plugin": "^5.48.1",
+        "@typescript-eslint/parser": "^5.48.1",
         "auto-changelog": "^2.4.0",
-        "eslint": "^8.26.0",
-        "fs-extra": "^10.1.0",
-        "jest": "^29.2.2",
-        "release-it": "^15.5.0",
+        "eslint": "^8.31.0",
+        "fs-extra": "^11.1.0",
+        "jest": "^29.3.1",
+        "release-it": "^15.6.0",
         "ts-jest": "^29.0.3"
     }
 }
