@@ -7,7 +7,7 @@
     "dependencies": {
         "@google/clasp": "2.4.2",
         "commander": "^10.0.0",
-        "typescript": "^5.0.2"
+        "typescript": "<5.0.0-0"
     },
     "author": "Fabrizio Antonangeli",
     "license": "GPL-3.0",
