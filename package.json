@@ -15,7 +15,7 @@
         "test": "jest",
         "e2e": "npm run build; jest --runInBand --config=jest.e2e.config.js",
         "lint": "eslint .",
-        "release": "release-it",
+        "release": "release-it --verbose",
         "build": "tsc",
         "build-watch": "tsc --watch",
         "start": "node build/src/index.js"
