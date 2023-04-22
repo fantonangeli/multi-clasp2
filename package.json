@@ -4,11 +4,6 @@
     "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
     "exports": "./build/index.js",
     "main": "build/index.js",
-    "dependencies": {
-        "@google/clasp": "2.4.2",
-        "commander": "^10.0.0",
-        "typescript": "<5.0.0-0"
-    },
     "author": "Fabrizio Antonangeli",
     "license": "GPL-3.0",
     "scripts": {
@@ -41,17 +36,22 @@
     "files": [
         "build"
     ],
+    "dependencies": {
+        "@google/clasp": "2.4.2",
+        "commander": "^10.0.1",
+        "typescript": "^5.0.4"
+    },
     "devDependencies": {
         "@jest/test-sequencer": "^29.5.0",
-        "@types/jest": "^29.5.0",
-        "@types/node": "^18.15.10",
-        "@typescript-eslint/eslint-plugin": "^5.56.0",
-        "@typescript-eslint/parser": "^5.56.0",
+        "@types/jest": "^29.5.1",
+        "@types/node": "^18.15.13",
+        "@typescript-eslint/eslint-plugin": "^5.59.0",
+        "@typescript-eslint/parser": "^5.59.0",
         "auto-changelog": "^2.4.0",
-        "eslint": "^8.36.0",
+        "eslint": "^8.39.0",
         "fs-extra": "^11.1.1",
         "jest": "^29.5.0",
-        "release-it": "^15.9.3",
-        "ts-jest": "^29.0.5"
+        "release-it": "^15.10.1",
+        "ts-jest": "^29.1.0"
     }
 }
