@@ -45,7 +45,7 @@
         "@jest/test-sequencer": "^29.5.0",
         "@types/jest": "^29.5.2",
         "@types/node": "^20.3.2",
-        "@typescript-eslint/eslint-plugin": "^5.60.1",
+        "@typescript-eslint/eslint-plugin": "^6.1.0",
         "@typescript-eslint/parser": "^5.60.1",
         "auto-changelog": "^2.4.0",
         "eslint": "^8.43.0",
