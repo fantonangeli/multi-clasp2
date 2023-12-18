@@ -1,6 +1,6 @@
 {
     "name": "multi-clasp2",
-    "version": "3.0.14",
+    "version": "3.0.15",
     "description": "Google Clasp wrapper to push changes to multiple Apps Script projects at once.",
     "exports": "./build/index.js",
     "main": "build/index.js",
