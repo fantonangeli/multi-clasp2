@@ -8,25 +8,35 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    concurrency:
+      group: e2e-tests
     strategy:
       matrix:
         node-version: [latest]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install -g @google/clasp
+
+      - name: Install Clasp
+        run: npm install -g @google/clasp
+
       - run: npm ci
+
       - name: Decrypt .clasprc
         run: echo "$DOT_CLASPRC" >> $HOME/.clasprc.json
         env:
           DOT_CLASPRC: ${{ secrets.DOT_CLASPRC }}
+
       - run: npm run test
+
       - run: npm run e2e
