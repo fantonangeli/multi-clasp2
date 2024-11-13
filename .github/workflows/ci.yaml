@@ -35,15 +35,20 @@ jobs:
 
       - run: npm ci
 
-      - name: Decrypt .clasprc
+      - name: Decrypt .clasprc (Windows)
+        if: runner.os == 'Windows'
         env:
           DOT_CLASPRC: ${{ secrets.DOT_CLASPRC }}
         run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            echo "$DOT_CLASPRC" | Out-File -FilePath $env:USERPROFILE\.clasprc.json -Encoding utf8
-          else
-            echo "$DOT_CLASPRC" >> $HOME/.clasprc.json
-          fi
+          echo $env:DOT_CLASPRC | Out-File -FilePath $env:USERPROFILE\.clasprc.json -Encoding utf8
+        shell: pwsh
+      
+      - name: Decrypt .clasprc (Linux/Mac)
+        if: runner.os != 'Windows'
+        env:
+          DOT_CLASPRC: ${{ secrets.DOT_CLASPRC }}
+        run: echo "$DOT_CLASPRC" >> $HOME/.clasprc.json
+        shell: bash        
 
       - run: npm run test
 
