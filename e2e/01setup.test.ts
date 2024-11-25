@@ -5,7 +5,7 @@ import {readClaspConfig, writeMultiClaspConfig} from '../src/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const CLASP_JSON_BASE_PATH = path.join(MULTI_CLASP_PATHS.SCRIPT_SRC, "/");
+const CLASP_JSON_BASE_PATH = MULTI_CLASP_PATHS.SCRIPT_SRC;
 
 describe('Generate the empty projects', () => {
   const multiClaspConfig: MultiClasp = [];
