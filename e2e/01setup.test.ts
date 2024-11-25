@@ -12,7 +12,7 @@ describe('Generate the empty projects', () => {
 
   const removeFile = (filePath: string) => {
     if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath); // Cross-platform method to delete a file
+      fs.unlinkSync(filePath);
     }
   };
 
