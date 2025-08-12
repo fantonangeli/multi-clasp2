@@ -33,9 +33,9 @@ describe('Generate the empty projects', () => {
   });
 
   it("create a multi-clasp config file", async () => {
-      expect(async ()=>{
-        await writeMultiClaspConfig(multiClaspConfig);
-      }).not.toThrowError();
+      expect(()=>{
+        writeMultiClaspConfig(multiClaspConfig);
+      }).not.toThrow();
   })
 
 });
