@@ -22,7 +22,7 @@ describe('Generate the empty projects', () => {
       const result = spawnSync(CLASP, ['create', '--type', 'Standalone', '--title', projectName, '--rootDir', MULTI_CLASP_PATHS.SCRIPT_SRC], {
         encoding: 'utf8',
       });
-      expect(result.stderr).not.toBe("");
+      expect(result.stderr).toContain("Creating new script:");
       expect(result.stdout).toContain('Created new Standalone script: https://script.google.com/d/');
       expect(result.status).toBe(0);
       // .clasp.json is created in "scripts_src" due a Clasp bug
