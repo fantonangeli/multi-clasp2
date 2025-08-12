@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install Clasp
-        run: npm install -g @google/clasp
+        run: npm install -g @google/clasp@2.5.0
 
       - run: npm ci
 
