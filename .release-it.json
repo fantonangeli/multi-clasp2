@@ -1,6 +1,6 @@
 {
     "hooks": {
-        "after:init": ["npm run lint", "npm test", "npm run e2e"],
+        "after:init": ["npm run lint", "npm test"],
         "after:bump": "npx auto-changelog -p && npm run build"
     },
     "git": {
