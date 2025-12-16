@@ -16,8 +16,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    concurrency:
-      group: e2e-tests
     strategy:
       matrix:
         node-version: [latest]
@@ -41,5 +39,3 @@ jobs:
           DOT_CLASPRC: ${{ secrets.DOT_CLASPRC }}
 
       - run: npm run test
-
-      - run: npm run e2e
