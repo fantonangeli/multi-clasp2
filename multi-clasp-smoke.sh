@@ -27,12 +27,15 @@ jq -n --arg scriptA "$SCRIPT_A" --arg scriptB "$SCRIPT_B" '[
   { scriptId: $scriptB, rootDir: "scripts_src" }
 ]' > .multi-clasp.json
 
-node ./build/src/index.js push
+export PS4=$'----------------------------------------------------------------------------------------------------\n+ '"${BASH_SOURCE}: "
+set -x
+
+node ./build/src/index.js push --force
 node ./build/src/index.js status
 node ./build/src/index.js version "smoke test"
 node ./build/src/index.js versions
-node ./build/src/index.js deploy --versionNumber 1 --description "smoke test"
-node ./build/src/index.js deployments
-node ./build/src/index.js undeploy --all 
-node ./build/src/index.js open --creds
-node ./build/src/index.js run helloMultiClasp 
+# node ./build/src/index.js deploy --versionNumber 1 --description "smoke test"
+# node ./build/src/index.js deployments
+# node ./build/src/index.js undeploy --all 
+# node ./build/src/index.js run testSum 5 4 
+node ./build/src/index.js open 
