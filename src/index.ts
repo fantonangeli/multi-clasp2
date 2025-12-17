@@ -22,11 +22,13 @@ program
   .action(push);
 
 program
-  .command('open')
-  .description('Open a script')
-  .option('--webapp', 'Open web application in the browser')
-  .option('--creds', 'Open the URL to create credentials')
-  .option('--addon', 'List parent IDs and open the URL of the first one')
+  .command('clasp open-script')
+  .description('Open the Apps Script IDE')
+  .action(genericAction);
+
+program
+  .command('clasp open-web-app')
+  .description('Open a deployed web app in the browser')
   .action(genericAction);
 
 program.command('deployments')

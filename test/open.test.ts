@@ -52,30 +52,6 @@ describe("multi-clasp open -> execShellCommand", () => {
     expect(execMock.mock.calls[1][0]).toBe("npx clasp open --creds");
   });
 
-  it("--addon: executes npx clasp open --addon", async () => {
-    const tasks = mockForeach(["AAA", "BBB"]);
-    getOptionsMock.mockReturnValue("--addon");
-
-    await genericAction();
-    await Promise.all(tasks);
-
-    expect(execMock).toHaveBeenCalledTimes(2);
-    expect(execMock.mock.calls[0][0]).toBe("npx clasp open --addon");
-    expect(execMock.mock.calls[1][0]).toBe("npx clasp open --addon");
-  });
-
-  it("all options: executes npx clasp open --webapp --creds --addon", async () => {
-    const tasks = mockForeach(["AAA", "BBB"]);
-    getOptionsMock.mockReturnValue("--webapp --creds --addon");
-
-    await genericAction();
-    await Promise.all(tasks);
-
-    expect(execMock).toHaveBeenCalledTimes(2);
-    expect(execMock.mock.calls[0][0]).toBe("npx clasp open --webapp --creds --addon");
-    expect(execMock.mock.calls[1][0]).toBe("npx clasp open --webapp --creds --addon");
-  });
-
   it("exits(1) if clasp fails", async () => {
     const tasks = mockForeach(["AAA"]);
     const exitSpy = jest.spyOn(process, "exit").mockImplementation((() => undefined) as any);
