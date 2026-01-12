@@ -1,11 +1,11 @@
 import { foreachMock, execMock, getOptionsMock, mockForeach } from "./_mocks/multiClaspMocks";
 import { genericAction } from "../src/common";
 
-describe("multi-clasp deployments -> execShellCommand", () => {
+describe("multi-clasp list-deployments -> execShellCommand", () => {
   const realArgv = process.argv.slice();
 
   beforeEach(() => {
-    process.argv = ["node", "multi-clasp", "deployments"];
+    process.argv = ["node", "multi-clasp", "list-deployments"];
     foreachMock.mockReset();
     execMock.mockReset();
     getOptionsMock.mockReset();
@@ -16,7 +16,7 @@ describe("multi-clasp deployments -> execShellCommand", () => {
     process.argv = realArgv;
   });
 
-  it("executes npx clasp deployments", async () => {
+  it("executes npx clasp list-deployments", async () => {
     const tasks = mockForeach(["AAA", "BBB"]);
     getOptionsMock.mockReturnValue("");
 
@@ -24,8 +24,8 @@ describe("multi-clasp deployments -> execShellCommand", () => {
     await Promise.all(tasks);
 
     expect(execMock).toHaveBeenCalledTimes(2);
-    expect(execMock.mock.calls[0][0]).toBe("npx clasp deployments ");
-    expect(execMock.mock.calls[1][0]).toBe("npx clasp deployments ");
+    expect(execMock.mock.calls[0][0]).toBe("npx clasp list-deployments ");
+    expect(execMock.mock.calls[1][0]).toBe("npx clasp list-deployments ");
   });
 
   it("exits(1) if clasp fails", async () => {
