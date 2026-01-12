@@ -56,8 +56,8 @@ The following clasp commands are supported. For the documentation refer to the o
 
 - [`multi-clasp show-file-status [--json]`](https://github.com/google/clasp#status)
 - [`multi-clasp open-script`](https://github.com/google/clasp#open)
+- [`multi-clasp open-web-app`](https://github.com/google/clasp#open)
 - [`multi-clasp open-container`](https://github.com/google/clasp#open)
-- [`multi-clasp open-credentials-setup`](https://github.com/google/clasp#open)
 - [`multi-clasp deployments`](https://github.com/google/clasp#deployments)
 - [`multi-clasp deploy [--versionNumber <version>] [--description <description>]`](https://github.com/google/clasp#deploy)
 - [`multi-clasp undeploy [--all]`](https://github.com/google/clasp#undeploy)

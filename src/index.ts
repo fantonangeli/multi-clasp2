@@ -23,12 +23,17 @@ program
 
 program
   .command('clasp open-script')
-  .description('Open the Apps Script IDE')
+  .description('Open the Apps Script IDE for the current project.')
   .action(genericAction);
 
 program
   .command('clasp open-web-app')
-  .description('Open a deployed web app in the browser')
+  .description('Open a deployed web app in the browser.')
+  .action(genericAction);
+
+program
+  .command('clasp open-container')
+  .description('Open the Apps Script IDE for the current project.')
   .action(genericAction);
 
 program.command('deployments')
