@@ -9,7 +9,7 @@ import {version} from '../package.json';
 const program = new Command();
 
 program
-  .command('status')
+  .command('show-file-status')
   .description('Lists files that will be pushed by clasp')
   .option('--json', 'Show status in JSON form')
   .action(genericAction);
@@ -22,17 +22,17 @@ program
   .action(push);
 
 program
-  .command('clasp open-script')
+  .command('open-script')
   .description('Open the Apps Script IDE for the current project.')
   .action(genericAction);
 
 program
-  .command('clasp open-web-app')
+  .command('open-web-app')
   .description('Open a deployed web app in the browser.')
   .action(genericAction);
 
 program
-  .command('clasp open-container')
+  .command('open-container')
   .description('Open the Apps Script IDE for the current project.')
   .action(genericAction);
 
