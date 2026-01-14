@@ -31,11 +31,13 @@ export PS4=$'-------------------------------------------------------------------
 set -x
 
 node ./build/src/index.js push --force
-node ./build/src/index.js status
+node ./build/src/index.js show-file-status
 node ./build/src/index.js version "smoke test"
 node ./build/src/index.js versions
 # node ./build/src/index.js deploy --versionNumber 1 --description "smoke test"
-# node ./build/src/index.js deployments
+# node ./build/src/index.js list-deployments
 # node ./build/src/index.js undeploy --all 
 # node ./build/src/index.js run testSum 5 4 
-node ./build/src/index.js open 
+node ./build/src/index.js open-script 
+node ./build/src/index.js open-web-app 
+node ./build/src/index.js open-container 
