@@ -38,7 +38,7 @@
     "dependencies": {
         "@google/clasp": "3.3.0",
         "commander": "^14.0.3",
-        "typescript": "^5.9.3"
+        "typescript": "^6.0.3"
     },
     "devDependencies": {
         "@jest/test-sequencer": "^30.3.0",
