@@ -2,12 +2,17 @@
     "compilerOptions": {
         "module": "commonjs",
         "moduleResolution": "node",
+        "ignoreDeprecations": "6.0",
         "pretty": true,
         "sourceMap": true,
         "target": "es6",
         "resolveJsonModule": true,
         "outDir": "./build",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "types": [
+            "node",
+            "jest"
+        ]
     },
     "include": [
         "src/**.ts"

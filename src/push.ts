@@ -30,7 +30,7 @@ function getPushClaspArgs(options: CommandOption): string{
  * @param options.retry {number} If the push of an App Script fail with it will retry n times
  */
 export default async (options: CommandOption): Promise<void> => {
-  const retry = parseInt(options.retry);
+  const retry = parseInt(options?.retry ?? "1");
 
   foreachClasp(async (claspConfig)=>{
     let retVal = false;

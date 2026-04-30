@@ -13,8 +13,8 @@ describe("common.js tests", () => {
 
   describe("runClasp push", () => {
     test("with wrong inputs", async () => {
-      expect(await runClasp({ scriptId: null, rootDir: null }, "push", "")).toBeFalsy();
-      expect(await runClasp({ scriptId: "", rootDir: null }, "push", "")).toBeFalsy();
+      expect(await runClasp({ scriptId: null, rootDir: null } as any, "push", "")).toBeFalsy();
+      expect(await runClasp({ scriptId: "", rootDir: null } as any, "push", "")).toBeFalsy();
       expect(await runClasp(undefined as any, undefined as any, undefined as any)).toBeFalsy();
     });
 

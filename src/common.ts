@@ -28,8 +28,8 @@ export async function runClasp(claspConfig:SingleClasp, command: string, options
           console.log(stderr);
           return false;
         }
-    } catch (e) {
-        console.error(e.stderr); 
+    } catch (e: any) {
+        console.error(e.stderr ?? "");
         return false;
     }
 
