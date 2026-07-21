@@ -1,4 +1,4 @@
-import {MultiClaspErrors} from "./mutli-clasp-errors";
+import {MultiClaspErrors} from "./mutli-clasp-errors.js";
 import * as child_process from 'child_process';
 
 /**

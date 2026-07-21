@@ -1,5 +1,5 @@
-import {foreachClasp, runClasp} from "./common";
-import {parseJsonOrDie} from "./utils";
+import {foreachClasp, runClasp} from "./common.js";
+import {parseJsonOrDie} from "./utils.js";
 
 interface CommandOption {
   readonly nondev: boolean;

@@ -1,10 +1,13 @@
 #! /usr/bin/env node
 
+import { createRequire } from 'node:module';
 import { Command } from 'commander';
-import { genericAction } from './common';
-import run from './run';
-import push from './push';
-import {version} from '../package.json';
+import { genericAction } from './common.js';
+import run from './run.js';
+import push from './push.js';
+
+const require = createRequire(import.meta.url);
+const { version } = require('../package.json') as { version?: string };
 
 const program = new Command();
 

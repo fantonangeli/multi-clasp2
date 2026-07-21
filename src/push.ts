@@ -1,4 +1,4 @@
-import {foreachClasp, runClasp} from "./common";
+import {foreachClasp, runClasp} from "./common.js";
 
 interface CommandOption {
   readonly retry?: string;

@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import { Config } from './config';
-import {execShellCommand, getOptions} from './utils';
+import { Config } from './config.js';
+import {execShellCommand, getOptions} from './utils.js';
 
 
 /**
