@@ -1,0 +1,7 @@
+{
+    "ignorePatterns": [
+        "build/*",
+        "**/*.json",
+        "scripts_src/*"
+    ]
+}
