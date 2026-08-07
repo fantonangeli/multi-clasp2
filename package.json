@@ -46,14 +46,14 @@
         "typescript": "npm:@typescript/typescript6@^6.0.3"
     },
     "devDependencies": {
-        "@jest/test-sequencer": "^30.3.0",
+        "@jest/test-sequencer": "^30.4.1",
         "@types/jest": "^30.0.0",
-        "@types/node": "^26.0.0",
-        "auto-changelog": "^2.5.0",
-        "fs-extra": "^11.3.4",
-        "jest": "^30.3.0",
-        "oxlint": "^1.76.0",
-        "release-it": "^20.0.1",
+        "@types/node": "^26.1.2",
+        "auto-changelog": "^2.6.0",
+        "fs-extra": "^11.4.0",
+        "jest": "^30.4.2",
+        "oxlint": "^1.77.0",
+        "release-it": "^21.0.1",
         "ts-jest": "^29.4.12"
     }
 }
