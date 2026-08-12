@@ -99,7 +99,7 @@ export async function foreachClasp(fn:(claspConfig:SingleClasp)=>Promise<void>):
  * @returns
  */
 export async function genericAction(): Promise<void> {
-  foreachClasp(async (claspConfig)=>{
+  await foreachClasp(async (claspConfig)=>{
     const retVal = await runClasp(claspConfig, process.argv[2], getOptions());
     if(!retVal){
       process.exit(1);

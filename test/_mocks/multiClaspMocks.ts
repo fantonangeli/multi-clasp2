@@ -1,53 +1,39 @@
-jest.mock("fs", () => {
-  const actual = jest.requireActual("fs");
+import { jest } from '@jest/globals';
+
+export const execMock = jest.fn();
+export const getOptionsMock = jest.fn(() => "");
+export const writeFileMock = jest.fn((_p: any, _d: any, _e: any, cb: any) => cb?.(null));
+export const unlinkMock = jest.fn((_p: any, cb: any) => cb?.(null));
+export const readFileSyncMock = jest.fn();
+export const writeFileSyncMock = jest.fn();
+
+jest.unstable_mockModule("fs", () => {
+  const actual = jest.requireActual<typeof import("fs")>("fs");
   return {
     ...actual,
-    writeFile: jest.fn((_p: any, _d: any, _e: any, cb: any) => cb?.(null)),
-    unlink: jest.fn((_p: any, cb: any) => cb?.(null)),
+    readFileSync: readFileSyncMock,
+    writeFile: writeFileMock,
+    writeFileSync: writeFileSyncMock,
+    unlink: unlinkMock,
   };
 });
 
-jest.mock("../../src/utils", () => ({
-  execShellCommand: jest.fn(),
-  getOptions: jest.fn(() => ""),
+jest.unstable_mockModule("../../src/utils.js", () => ({
+  execShellCommand: execMock,
+  getOptions: getOptionsMock,
+  parseJsonOrDie: <T>(value: string): T => JSON.parse(value) as T,
 }));
 
-jest.mock("../../src/common", () => {
-  const actual = jest.requireActual("../../src/common");
-  const utils = jest.requireMock("../../src/utils");
-  const foreachClasp = jest.fn();
-
-  return {
-    ...actual,
-    foreachClasp,
-    genericAction: jest.fn(async () => {
-      await foreachClasp(async (claspConfig: SingleClasp) => {
-        const retVal = await actual.runClasp(
-          claspConfig,
-          process.argv[2],
-          utils.getOptions(),
-        );
-        if (!retVal) {
-          process.exit(1);
-        }
-      });
-    }),
-  };
-});
-
-const common = jest.requireMock("../../src/common") as typeof import("../../src/common");
-const utils = jest.requireMock("../../src/utils") as typeof import("../../src/utils");
-
-export const foreachMock = common.foreachClasp as unknown as jest.Mock;
-export const execMock = utils.execShellCommand as unknown as jest.Mock;
-export const getOptionsMock = utils.getOptions as unknown as jest.Mock;
+export function resetMultiClaspMocks() {
+  execMock.mockReset();
+  getOptionsMock.mockReset();
+  getOptionsMock.mockReturnValue("");
+  writeFileMock.mockClear();
+  unlinkMock.mockClear();
+  readFileSyncMock.mockReset();
+  writeFileSyncMock.mockClear();
+}
 
 export function mockForeach(scriptIds: string[]) {
-  const tasks: Promise<any>[] = [];
-  foreachMock.mockImplementation((fn: any) => {
-    for (const scriptId of scriptIds) {
-      tasks.push(fn({ scriptId }));
-    }
-  });
-  return tasks;
+  readFileSyncMock.mockReturnValue(JSON.stringify(scriptIds.map((scriptId) => ({ scriptId }))));
 }

@@ -1,14 +1,14 @@
-import { foreachMock, execMock, getOptionsMock, mockForeach } from "./_mocks/multiClaspMocks";
-import { genericAction } from "../src/common";
+import { jest } from '@jest/globals';
+import { execMock, getOptionsMock, mockForeach, resetMultiClaspMocks } from "./_mocks/multiClaspMocks.js";
+
+const { genericAction } = await import("../src/common.js");
 
 describe("multi-clasp deploy -> execShellCommand", () => {
   const realArgv = process.argv.slice();
 
   beforeEach(() => {
     process.argv = ["node", "multi-clasp", "deploy"];
-    foreachMock.mockReset();
-    execMock.mockReset();
-    getOptionsMock.mockReset();
+    resetMultiClaspMocks();
     execMock.mockResolvedValue({ error: null, stdout: "ok", stderr: "" });
   });
 
@@ -17,11 +17,10 @@ describe("multi-clasp deploy -> execShellCommand", () => {
   });
 
   it("no options: executes npx clasp deploy", async () => {
-    const tasks = mockForeach(["AAA", "BBB"]);
+    mockForeach(["AAA", "BBB"]);
     getOptionsMock.mockReturnValue("");
 
     await genericAction();
-    await Promise.all(tasks);
 
     expect(execMock).toHaveBeenCalledTimes(2);
     expect(execMock.mock.calls[0][0]).toBe("npx clasp deploy ");
@@ -29,11 +28,10 @@ describe("multi-clasp deploy -> execShellCommand", () => {
   });
 
   it("--versionNumber: executes npx clasp deploy --versionNumber 7", async () => {
-    const tasks = mockForeach(["AAA", "BBB"]);
+    mockForeach(["AAA", "BBB"]);
     getOptionsMock.mockReturnValue("--versionNumber 7");
 
     await genericAction();
-    await Promise.all(tasks);
 
     expect(execMock).toHaveBeenCalledTimes(2);
     expect(execMock.mock.calls[0][0]).toBe("npx clasp deploy --versionNumber 7");
@@ -41,11 +39,10 @@ describe("multi-clasp deploy -> execShellCommand", () => {
   });
 
   it("--description: executes npx clasp deploy --description hello", async () => {
-    const tasks = mockForeach(["AAA", "BBB"]);
+    mockForeach(["AAA", "BBB"]);
     getOptionsMock.mockReturnValue("--description hello");
 
     await genericAction();
-    await Promise.all(tasks);
 
     expect(execMock).toHaveBeenCalledTimes(2);
     expect(execMock.mock.calls[0][0]).toBe("npx clasp deploy --description hello");
@@ -53,11 +50,10 @@ describe("multi-clasp deploy -> execShellCommand", () => {
   });
 
   it("both: executes npx clasp deploy --versionNumber 7 --description hello", async () => {
-    const tasks = mockForeach(["AAA", "BBB"]);
+    mockForeach(["AAA", "BBB"]);
     getOptionsMock.mockReturnValue("--versionNumber 7 --description hello");
 
     await genericAction();
-    await Promise.all(tasks);
 
     expect(execMock).toHaveBeenCalledTimes(2);
     expect(execMock.mock.calls[0][0]).toBe("npx clasp deploy --versionNumber 7 --description hello");
@@ -65,14 +61,13 @@ describe("multi-clasp deploy -> execShellCommand", () => {
   });
 
   it("exits(1) if clasp fails", async () => {
-    const tasks = mockForeach(["AAA"]);
+    mockForeach(["AAA"]);
     const exitSpy = jest.spyOn(process, "exit").mockImplementation((() => undefined) as any);
 
     getOptionsMock.mockReturnValue("--versionNumber 7");
     execMock.mockResolvedValue({ error: new Error("boom"), stdout: "", stderr: "fail" });
 
     await genericAction();
-    await Promise.all(tasks);
 
     expect(exitSpy).toHaveBeenCalledWith(1);
     exitSpy.mockRestore();

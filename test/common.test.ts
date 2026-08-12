@@ -1,14 +1,11 @@
-import { execMock } from "./_mocks/multiClaspMocks";
-import * as fs from "fs";
-import { runClasp } from "../src/common";
+import { execMock, resetMultiClaspMocks, writeFileMock } from "./_mocks/multiClaspMocks.js";
 
-const writeFileMock = fs.writeFile as unknown as jest.Mock;
+const { runClasp } = await import("../src/common.js");
 
 describe("common.js tests", () => {
   beforeEach(() => {
-    execMock.mockReset();
+    resetMultiClaspMocks();
     execMock.mockResolvedValue({ error: null, stdout: "", stderr: "" });
-    writeFileMock.mockClear();
   });
 
   describe("runClasp push", () => {

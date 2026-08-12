@@ -32,7 +32,7 @@ function getPushClaspArgs(options: CommandOption): string{
 export default async (options: CommandOption): Promise<void> => {
   const retry = parseInt(options?.retry ?? "1");
 
-  foreachClasp(async (claspConfig)=>{
+  await foreachClasp(async (claspConfig)=>{
     let retVal = false;
 
     for (let r = 0; r < retry; r++) {

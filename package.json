@@ -11,7 +11,7 @@
         "node": ">=22.12.0"
     },
     "scripts": {
-        "test": "jest",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
         "lint": "oxlint .",
         "release": "release-it --verbose",
         "build": "tsc",
