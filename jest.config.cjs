@@ -8,7 +8,8 @@ module.exports = {
             useESM: true,
         }],
     },
-    testMatch: ["<rootDir>/test/**/*.ts"],
+    testMatch: ["<rootDir>/test/**/*.test.ts"],
+    setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
     testPathIgnorePatterns: ["/test/_mocks/"],
     modulePathIgnorePatterns: ["<rootDir>/build/"],
     moduleNameMapper: {
