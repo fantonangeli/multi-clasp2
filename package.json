@@ -41,9 +41,7 @@
     ],
     "dependencies": {
         "@google/clasp": "3.4.1",
-        "@typescript/native": "npm:typescript@^7.0.2",
-        "commander": "^15.0.0",
-        "typescript": "npm:@typescript/typescript6@^6.0.3"
+        "commander": "^15.0.0"
     },
     "devDependencies": {
         "@jest/test-sequencer": "^30.4.1",
@@ -54,6 +52,7 @@
         "jest": "^30.4.2",
         "oxlint": "^1.77.0",
         "release-it": "^21.0.1",
-        "ts-jest": "^29.4.12"
+        "ts-jest": "^29.4.12",
+        "typescript": "^6.0.3"
     }
 }
