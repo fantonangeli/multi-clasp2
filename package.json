@@ -53,6 +53,6 @@
         "oxlint": "^1.77.0",
         "release-it": "^21.0.1",
         "ts-jest": "^29.4.12",
-        "typescript": "^6.0.3"
+        "typescript": "^7.0.2"
     }
 }
