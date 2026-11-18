@@ -9,6 +9,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      # ts-jest does not support TypeScript 7.
+      # TODO: Remove this restriction when ts-jest supports TypeScript 7.
+      - dependency-name: "typescript"
+        versions: [">=7.0.0"]
     groups:
       all-dependencies:
         patterns:
